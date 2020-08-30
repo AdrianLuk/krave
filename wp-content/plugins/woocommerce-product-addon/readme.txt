@@ -4,7 +4,7 @@ Tags: woocommerce, woocommerce pesonalized products, woocommerce custom fields, 
 Donate link: http://www.najeebmedia.com/donate
 Requires at least: 3.5
 Tested up to: 5.2
-Stable tag: 20.3
+Stable tag: 20.4.3
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Requires PHP: 5.6
@@ -91,6 +91,17 @@ Drag & Drop input fields with many options. Prices can also be added with option
 9. Attach inputs to bulk products
 
 == Changelog ==
+= 20.4.3 August 16, 2020 =
+* Bug fixed: Price calculation issue fixed for discount input
+= 20.4.2 August 10, 2020 =
+* Bug fixed: [extra space issue fixed in 20.4](https://wordpress.org/support/topic/20-4-disrupts-html-field-entries/)
+= 20.4 August 8, 2020 =
+* Feature: [Language feature/pack added for PlUpload](https://clients.najeebmedia.com/forums/topic/enable-translations-of-file-input-javascript-error-messages/)
+* Feature: Hide option if out of stock for Select/Radio/Checbox/Images
+* Bug fixed: [Multiple images now can be selected for Images Input](https://clients.najeebmedia.com/forums/topic/ppom-fields-image-dropdown-addon-upload-images-error/)
+* Bug fixed: [Delete text for file is not translatable](https://clients.najeebmedia.com/forums/topic/allow-translation-of-file-input-delete-button/#post-18225)
+* Bug fixed: [WPML issue with Checkbox option fixed](https://wordpress.org/support/topic/wpml-variation-product-problem/)
+* Bug fixed: [Color Picker issue fixed](https://clients.najeebmedia.com/forums/topic/ppom-color-picker-problem/)
 = 20.3 July 9, 2020 =
 * Tweaks: Legacy Conditional put back to action by default
 * Bug fixed: [PPOM Menu Permission Setting](https://wordpress.org/support/topic/ppom-permissions-issue/)

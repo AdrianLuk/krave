@@ -61,13 +61,13 @@ function qligg_get_user_profile($account_id = null)
   if (!$account['access_token']) {
     return $defaults;
   }
-  //1326
+
   //detect token type old || new
   //validate token based on type
 
   if ($account['token_type'] === 'BASIC') {
     $_profile_info = $qliggAPI->BASIC->get_user_profile($account['access_token']);
-    $_profile_info['name'] = __('This token expires soon!');
+    $_profile_info['name'] = esc_html__('This token expires soon!');
   }
 
   if ($account['token_type'] === 'PERSONAL') {
@@ -114,13 +114,7 @@ function qligg_get_tag_profile($hashtag = null)
     return wp_parse_args($profile_info, $defaults);
   }
 
-  // if (!$hashtag_id = $qliggAPI->BUSINESS->getTagId($hashtag)) {
-  //   return $defaults;
-  // }
-
   $_profile_info = array();
-
-  //$_profile_info['id'] = $hashtag_id;
 
   // business token to get profile pic
 

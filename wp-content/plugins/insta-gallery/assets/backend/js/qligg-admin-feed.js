@@ -1,4 +1,5 @@
 (function ($) {
+  "use strict";
 
   var count = 0,
     timer;
@@ -25,8 +26,6 @@
     },
     getFormData: function ($form) {
       return $form.serializeJSON({ checkboxUncheckedValue: 'false', parseBooleans: true, parseNulls: true });
-      //breakes image highlight id
-      //      return $form.serializeJSON({checkboxUncheckedValue: 'false', parseBooleans: true, parseNumbers: true, parseNulls: true});
     }
   });
 
@@ -288,17 +287,7 @@
       this.renderPanels(e);
       this.renderTabs(e);
       this.enableSave(e);
-    },
-    // setUsername: function (e) {
-    //   var modal = this,
-    //     $select = modal.$el.find('#qligg_modal').find('form').find('select[name=username]');
-    //   $select.trigger('change');
-    // },
-    // change: function (e) {
-    //   e.preventDefault();
-    //   this.updateModel(e);
-    // },
-
+    }
   });
 
   var FeedViewTabs = Backbone.View.extend({
@@ -337,13 +326,10 @@
           console.log('wpColorPicker');
           $(event.target).trigger('qligg.color.change');
         },
-        clear: function (event, ui) {
-          //          $(event.target).trigger('change');
-        },
-        hide: function (event, ui) {
-          aler('!!!!');
-          //          $(event.target).trigger('change');
-        }
+        //clear: function (event, ui) {
+        //},
+        //: function (event, ui) {
+        //}
       });
     });
 

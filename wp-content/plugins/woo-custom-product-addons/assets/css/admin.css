@@ -235,7 +235,7 @@ table.wp-list-table .column-wcpa_forms{
     padding:0;
 }
 
-.clearfix:before, .clearfix:after {
+.wcpa_clearfix:before, .wcpa_clearfix:after {
     content:'';
     display:block;
     clear:both;

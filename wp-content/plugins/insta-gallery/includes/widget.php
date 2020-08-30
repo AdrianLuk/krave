@@ -11,7 +11,7 @@ class QLIGG_Widget extends WP_Widget {
 
   public function widget($args, $instance) {
     $title = empty($instance['title']) ? '' : apply_filters('widget_title', $instance['title']);
-    $feed_id = empty($instance['feed_id']) ? @$instance['instagal_id'] : $instance['feed_id'];
+    $feed_id = !empty($instance['feed_id']) ? $instance['feed_id'] : @$instance['instagal_id'];
 
     echo $args['before_widget'];
 
@@ -19,7 +19,7 @@ class QLIGG_Widget extends WP_Widget {
       echo $args['before_title'] . wp_kses_post($title) . $args['after_title'];
     }
 
-    if (!empty($feed_id)) {
+    if (isset($feed_id)) {
       echo do_shortcode('[insta-gallery id="' . $feed_id . '"]');
     }
 
@@ -52,11 +52,15 @@ class QLIGG_Widget extends WP_Widget {
           foreach ($feeds as $id => $feed) {
 
             if (isset($feed['type'])) {
-              if ($feed['type'] == 'username') {
+
+              $profile_info =  $feed['profile'];
+  
+              //if ($feed['type'] == 'username') {
                 $profile_info = qligg_get_user_profile($feed['username']);
-              } else {
-                $profile_info = qligg_get_tag_profile($feed['tag']);
-              }
+  
+                $feed['profile'] = array_merge($profile_info, array_filter($feed['profile']));
+              //}
+  
             }
 
             $label = sprintf('%s : %s', sprintf(esc_html__('Feed %s', 'insta-gallery'), $id), $profile_info['name']);

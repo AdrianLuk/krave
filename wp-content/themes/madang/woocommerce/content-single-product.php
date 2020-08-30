@@ -19,7 +19,6 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
-
 ?>
 
 <?php
@@ -47,9 +46,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 		 */
 		do_action( 'woocommerce_before_single_product_summary' );
 	?>
-
+	
 	<div class="summary entry-summary">
-
 		<?php
 			/**
 			 * woocommerce_single_product_summary hook.
@@ -64,9 +62,42 @@ if ( ! defined( 'ABSPATH' ) ) {
 			 */
 			do_action( 'woocommerce_single_product_summary' );
 		?>
-
+		<?php
+		 $metering = get_theme_mod( 'madang_metering', 'g' );
+		 $metering_cal = get_theme_mod( 'madang_calories', 'kcal' );
+		// specifying true as the last parameter in get_post_meta() returns the first value for the specified meta key ('madang_calories', 'madang_proteins' etc)
+		$calories = get_post_meta( get_the_ID(), 'madang_calories', true);
+		$proteins = get_post_meta( get_the_ID(), 'madang_proteins', true);
+        $fats = get_post_meta( get_the_ID(), 'madang_fats', true);
+        $carbohydrates = get_post_meta( get_the_ID(), 'madang_carbohydrates', true);
+		?>
+        <div class="nutrition-fact">
+            <h6><?php echo esc_html__('Nutrition Facts', 'madang'); ?></h6>
+				<div class="facts-table">
+		            <table>
+		                <tbody>
+		                    <tr>
+		                        <td><span><?php echo esc_html__('Calories', 'madang'); ?></span></td>
+		                        <td><span class="cart_calories"><?php echo esc_attr(number_format($calories,0," "," ").$metering_cal); ?></span></td>
+		                    </tr>
+		                    <tr>
+		                        <td><span class="cart_proteins"><?php echo esc_html__('Proteins', 'madang'); ?></span></td>
+		                        <td><span><?php echo esc_attr(number_format($proteins,0," "," ").$metering); ?></span></td>
+		                    </tr>
+		                    <tr>
+		                        <td><span><?php echo esc_html__('Fats', 'madang'); ?></span></td>
+		                        <td><span class="cart_fats"><?php echo esc_attr(number_format($fats,0," "," ").$metering); ?></span></td>
+		                    </tr>
+		                    <tr>
+		                        <td><span><?php echo esc_html__('Carbohydrates', 'madang'); ?></span></td>
+		                        <td><span class="cart_carbohydrates"><?php echo esc_attr(number_format($carbohydrates,0," "," ").$metering); ?></span></td>
+		                    </tr>
+		                </tbody>
+		            </table>
+		        </div>
+        </div>
 	</div><!-- .summary -->
-
+    
 	<?php
 		/**
 		 * woocommerce_after_single_product_summary hook.
@@ -77,9 +108,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 		 */
 		do_action( 'woocommerce_after_single_product_summary' );
 	?>
-
-	<meta itemprop="url" content="<?php the_permalink(); ?>" />
-
 </div><!-- #product-<?php the_ID(); ?> -->
 
 <?php do_action( 'woocommerce_after_single_product' ); ?>

@@ -241,15 +241,6 @@ function madang_shortcode_contact( $atts, $content=null ) {
                         <div class="map-info">
                             <div class="row">
                                 <div class="col-sm-6 col-xs-12">
-                                    <div class="title-visit">
-                                        <h3 class="font-montserrat-light font25 text-capitalize"> <?php echo esc_attr( $atts['title1'] ); ?> </h3>
-                                    </div>
-                                    <div class="content-visit">
-                                        <p class="font-montserrat-light font17"> <?php echo esc_attr( $atts['address'] ); ?> </p>
-                                        <a href="<?php echo esc_url( $atts['btn_link1'] ); ?>" class="link-contact link-visit font-montserrat-light font17 text-capitalize"> <?php echo esc_attr( $atts['btn_text1'] ); ?></a>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-xs-12">
                                     <div class="title-touch">
                                         <h3 class="font-montserrat-light font25 text-capitalize"> <?php echo esc_attr( $atts['title2'] ); ?> </h3>
                                     </div>
@@ -265,8 +256,27 @@ function madang_shortcode_contact( $atts, $content=null ) {
                                         <div class="content-address">
                                             <a href="<?php echo esc_url( $atts['btn_link2'] ); ?>" class="link-contact link-touch font-montserrat-light font17"> <?php echo esc_attr( $atts['btn_text2'] ); ?></a>
                                         </div>
+                                        <div class="social-links">
+                                            <ul>
+                                                <li><a href="https://www.facebook.com/kravemeals">
+                                                    <i class="fa fa-facebook hvr-wobble-top txcolor" aria-hidden="true"></i>
+                                                </a></li>
+                                                <li><a href="https://www.instagram.com/krave_meals/">
+                                                    <i class="fa fa-instagram txcolor hvr-wobble-top" aria-hidden="true"></i>
+                                                </a></li>
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
+                                <!--<div class="col-sm-6 col-xs-12">
+                                    <div class="title-visit">
+                                        <h3 class="font-montserrat-light font25 text-capitalize"> <?php echo esc_attr( $atts['title1'] ); ?> </h3>
+                                    </div>
+                                    <div class="content-visit">
+                                        <p class="font-montserrat-light font17"> <?php echo esc_attr( $atts['address'] ); ?> </p>
+                                        <a href="<?php echo esc_url( $atts['btn_link1'] ); ?>" class="link-contact link-visit font-montserrat-light font17 text-capitalize"> <?php echo esc_attr( $atts['btn_text1'] ); ?></a>
+                                    </div>
+                                </div>-->
                             </div>
                         </div>
                     </div>

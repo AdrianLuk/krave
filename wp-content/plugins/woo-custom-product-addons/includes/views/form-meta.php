@@ -1,4 +1,4 @@
-<div class="wcpa_upgrade clearfix">
+<div class="wcpa_upgrade wcpa_clearfix">
     <div class="wcpa_upgrade_left">
         <h1>Upgrade to Premium Now!</h1>
 <!--        <div class="price">-->

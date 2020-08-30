@@ -155,7 +155,7 @@ class QLIGG_Account_Controller extends QLIGG_Controller
         'qligg_delete_account' => wp_create_nonce('qligg_delete_account'),
       ),
       'message' => array(
-        'confirm_delete' => __('Do you want to delete the account?', 'insta-gallery')
+        'confirm_delete' => esc_html__('Do you want to delete the account?', 'insta-gallery')
       )
     ));
 

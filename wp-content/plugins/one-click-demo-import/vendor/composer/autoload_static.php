@@ -4,35 +4,35 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit1dc3b7695346d0ca54da2c4b66963a38
+class ComposerStaticInitef3a658a88d521398d72929dc54fa111
 {
     public static $prefixLengthsPsr4 = array (
-        'P' => 
-        array (
-            'ProteusThemes\\WPContentImporter2\\' => 33,
-        ),
         'O' => 
         array (
             'OCDI\\' => 5,
         ),
+        'A' => 
+        array (
+            'AwesomeMotive\\WPContentImporter2\\' => 33,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'ProteusThemes\\WPContentImporter2\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/proteusthemes/wp-content-importer-v2/src',
-        ),
         'OCDI\\' => 
         array (
             0 => __DIR__ . '/../..' . '/inc',
+        ),
+        'AwesomeMotive\\WPContentImporter2\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/awesomemotive/wp-content-importer-v2/src',
         ),
     );
 
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit1dc3b7695346d0ca54da2c4b66963a38::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit1dc3b7695346d0ca54da2c4b66963a38::$prefixDirsPsr4;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitef3a658a88d521398d72929dc54fa111::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitef3a658a88d521398d72929dc54fa111::$prefixDirsPsr4;
 
         }, null, ClassLoader::class);
     }

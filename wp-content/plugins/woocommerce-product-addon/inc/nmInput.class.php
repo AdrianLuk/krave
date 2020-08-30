@@ -1254,7 +1254,9 @@ class NM_Form {
             $field_html = $field_html . $label;
         }
         
-        $html   .= stripslashes( $field_html );
+        $html_content = apply_filters( 'ppom_section_content', $field_html );
+        
+        $html   .= stripslashes( $html_content );
         
         $html .= '<div style="clear: both"></div>';
         

@@ -1,20 +1,18 @@
-
 (function ($) {
+  "use strict";
 
   _.mixin({
     escapeHtml: function (attribute) {
       return attribute.replace('&amp;', /&/g)
-              .replace(/&gt;/g, ">")
-              .replace(/&lt;/g, "<")
-              .replace(/&quot;/g, '"')
-              .replace(/&#039;/g, "'");
+        .replace(/&gt;/g, ">")
+        .replace(/&lt;/g, "<")
+        .replace(/&quot;/g, '"')
+        .replace(/&#039;/g, "'");
     },
     getFormData: function ($form) {
       return $form.serializeJSON();
     }
   });
-
-
 
   // Spinner
   // -------------------------------------------------------------------------
@@ -37,13 +35,13 @@
   }
 
   var $igs_image_id = $('input[name=insta_spinner_image_id]'),
-          $igs_reset = $('#ig-spinner-reset');
+    $igs_reset = $('#ig-spinner-reset');
 
   $('#qligg-save-settings').on('submit', function (e) {
     e.preventDefault();
 
     var $form = $(this),
-            $spinner = $form.find('.spinner');
+      $spinner = $form.find('.spinner');
 
     $.ajax({
       url: ajaxurl,
@@ -69,7 +67,7 @@
   });
 
   // reset spinner to default
-  $igs_reset.click(function () {
+  $igs_reset.on('click', function () {
     $igs_image_id.val('');
     ig_change_spinner();
     $(this).hide();
@@ -82,7 +80,7 @@
 
   // Upload media image
   // ---------------------------------------------------------------------------
-  $('#ig-spinner-upload').click(function (e) {
+  $('#ig-spinner-upload').on('click', function (e) {
     e.preventDefault();
     var image_frame;
 
@@ -143,7 +141,5 @@
 
     image_frame.open();
   });
-
-
 
 })(jQuery);

@@ -1,5 +1,6 @@
 (function ($) {
-  //https://w3bits.com/flexbox-masonry/
+  "use strict";
+
   var swiper_index = 0, $swipers = {};
 
   // Ajax load
@@ -156,8 +157,8 @@
       },
       breakpoints: {
         320: {
-          slidesPerView: 2,
-          spaceBetween: 2,
+          slidesPerView: 1,
+          spaceBetween: 1,
         },
         480: {
           spaceBetween: parseInt(options.spacing),
@@ -229,7 +230,6 @@
     // Carousel
     // -------------------------------------------------------------------------
     //$('.insta-gallery-item', $wrap).on('mfpOpen', function (e) {
-    //console.log(e);
     //});
 
     if (!options.popup.display) {
@@ -246,17 +246,8 @@
 
           var media = '', profile = '', counter = '', caption = '', info = '', likes = '', date = '', comments = '';
 
-          //if (item.el.data('item').type == 'video') {
-          //  media = '<video autoplay>' +
-          //          '<source src="' + item.el.data('item').videos.standard + '" type="video/mp4">' +
-          //          '</video>';
-          //} else if (item.el.data('item').type == 'gallery') {
-          //media = 'this is a gallery';
-          //} else {
-
           media = '<img src="' + item.el.data('item').images.standard + '"/>'
-          //}
-
+       
           counter = '<div class="mfp-icons"><div class="mfp-counter">' + (item.index + 1) + ' / ' + $('.insta-gallery-item', $wrap).length + '</div><a class="mfp-link" href="' + item.el.data('item').link + '" target="_blank" rel="noopener"><i class="qligg-icon-instagram"></i>Instagram</a></div>';
 
           if (options.popup.profile) {
@@ -321,59 +312,7 @@
 
     qligg_load_item_images($item, 0);
 
-  });
-
-  /*function ig_lazy_load($wrap, item) {
-   var lazyImages = [].slice.call($wrap.find('img.ig-lazy'));
-   var active = false;
-   
-   var lazyLoadImages = function () {
-   if (active === false) {
-   active = true;
-   
-   setTimeout(
-   function () {
-   lazyImages
-   .forEach(function (lazyImage) {
-   if ((lazyImage.getBoundingClientRect().top <= window.innerHeight && lazyImage
-   .getBoundingClientRect().bottom >= 0)
-   && getComputedStyle(lazyImage).display !== "none") {
-   lazyImage.src = lazyImage.dataset.src;
-   lazyImage.classList.remove("lazy");
-   
-   lazyImages = lazyImages
-   .filter(function (image) {
-   return image !== lazyImage;
-   });
-   
-   if (lazyImages.length === 0) {
-   document.removeEventListener(
-   "scroll",
-   lazyLoadImages);
-   document.removeEventListener(
-   "touchmove",
-   lazyLoadImages);
-   window.removeEventListener(
-   "resize",
-   lazyLoadImages);
-   window.removeEventListener(
-   "orientationchange",
-   lazyLoadImages);
-   }
-   }
-   });
-   
-   active = false;
-   }, 200);
-   }
-   };
-   
-   document.addEventListener("scroll", lazyLoadImages);
-   document.addEventListener("touchmove", lazyLoadImages);
-   window.addEventListener("resize", lazyLoadImages);
-   window.addEventListener("orientationchange", lazyLoadImages);
-   lazyLoadImages();
-   }*/
+  });  
 
   // IE8
   // ---------------------------------------------------------------------------

@@ -1,12 +1,5 @@
 (function ($) {
-
-  function getUrlVars() {
-    var vars = {};
-    var parts = window.location.href.slice(0, -2).replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
-      vars[key] = value;
-    });
-    return vars;
-  }
+  "use strict";
 
   _.mixin({
     escapeHtml: function (attribute) {
@@ -194,58 +187,5 @@
     e.preventDefault();
     new AccountModal(e);
   });
-
-  // Generate token
-  // ---------------------------------------------------------------------------
-  /*$(document).on('ready', function (e) {
-
-    var $button = $('#qligg-generate-token'),
-      $spinner = $button.closest('p').find('.spinner');
-
-    var urlVars = getUrlVars();
-    //  id = urlVars.id || false,
-    //  access_token = urlVars.access_token || false,
-    //  account_type = urlVars.account_type || false,
-    //  expires_in = urlVars.expires_in || false,
-    //  username = urlVars.username || false;
-
-    console.log('urlVars', urlVars);
-
-    if (!urlVars.id || !urlVars.access_token || !urlVars.username) {
-      return;
-    }
-
-    $.ajax({
-      url: ajaxurl,
-      type: 'post',
-      data: {
-        action: 'qligg_add_account',
-        account_data: window.location.href,
-        nonce: qligg_account.nonce.qligg_add_account
-      },
-      beforeSend: function () {
-        $button.css({ 'opacity': '.5', 'pointer-events': 'none' });
-        $spinner.addClass('is-active');
-      },
-      success: function (response) {
-        if (response.success) {
-          setTimeout(function () {
-            window.location = window.location.href.split("&access_token")[0];
-          }, 300);
-        } else {
-          alert(response.data);
-        }
-      },
-      complete: function () {
-        $button.removeAttr('style');
-        $spinner.removeClass('is-active');
-        //            window.location.hash = '';
-        window.location.href.substring(0, window.location.href.indexOf('?'));
-      },
-      error: function (jqXHR, textStatus) {
-        console.log(textStatus);
-      }
-    });
-
-  });*/
+  
 })(jQuery);

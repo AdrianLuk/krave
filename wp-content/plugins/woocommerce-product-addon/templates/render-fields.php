@@ -140,6 +140,8 @@ foreach( $ppom_fields_meta as $meta ) {
 	//WPML
 	$title			= ppom_wpml_translate($title, 'PPOM');
 	$description	= ppom_wpml_translate($description, 'PPOM');
+	$description    = apply_filters( 'ppom_description_content', $description, $meta );
+
 	
 	// Generating field label
 	$show_asterisk		= ( !empty($required) && $title != '' ) ? '<span class="show_required"> *</span>' : '';

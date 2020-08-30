@@ -2,9 +2,9 @@
 Contributors: acowebs,acowebssupport,ashinacowebs
 Tags: WooCommerce custom fields,  WooCommerce product options, WooCommerce product fields, WooCommerce custom price field,WooCommerce personalized product, WooCommerce custom product fields, product fields,
 Requires at least: 3.9
-Tested up to: 5.4.2
+Tested up to: 5.5.0
 Requires PHP: 5.6
-Stable tag: 2.4.5
+Stable tag: 2.4.7
 
 
 WooCommerce Product Addons. Add custom fields to your WooCommerce product page. With an easy-to-use Custom Form Builder.
@@ -122,6 +122,13 @@ Inorder to show the Woocommerce product options plugin fields, it is mandatory t
 That means, it must have price set and must be in stock
 
 == Changelog ==
+= 2.4.7  =
+* Bug fix: css conflict with businessx theme
+= 2.4.6  =
+* Wordpress 5.5.x Support
+* WooCommerce 4.4.x Support
+* Bug fixes
+
 = 2.4.5  =
 * WooCommerce 4.3.0 Support
 = 2.4.4  =

@@ -346,7 +346,8 @@ function madang_shortcode_slide( $atts, $content=null ) {
         <img src="<?php echo esc_url( $atts['image'] ); ?>" alt="<?php echo esc_attr( $atts['title'] ); ?>">
         <div class="container">
             <div class="banner-text text-left">
-                <h1 class="text-capitalize"><?php echo esc_html( $atts['title'] ); ?> <span class="txcolor"><?php echo esc_html( $atts['subtitle'] ); ?></span></h1>
+                <h1 class="text-capitalize"><?php echo esc_html( $atts['title'] ); ?><br>
+                <span class="txcolor"><?php echo esc_html( $atts['subtitle'] ); ?></span></h1>
                 <p><?php echo esc_html( $atts['text'] ); ?></p>
                 <?php if ( $atts['button_text']!='' ){ ?>
                 <a href="<?php echo esc_url( $atts['button_url'] ); ?>" class="btn bgcolor bghcolors"><?php echo esc_html( $atts['button_text'] ); ?></a>
@@ -361,7 +362,9 @@ function madang_shortcode_slide( $atts, $content=null ) {
         <img src="<?php echo esc_url( $atts['image'] ); ?>" alt="<?php echo esc_attr( $atts['title'] ); ?>">
         <div class="container">
             <div class="banner-text text-center">
-                <h1 class="text-capitalize"><?php echo esc_html( $atts['title'] ); ?> <span class="txcolor"><?php echo esc_html( $atts['subtitle'] ); ?></span></h1>
+                <h1 class="text-capitalize"><?php echo esc_html( $atts['title'] ); ?><br>
+                <span class="txcolor"><?php echo esc_html( $atts['subtitle'] ); ?></span></h1>
+                <p><?php echo esc_html( $atts['text'] ); ?></p>
                 <?php if ( $atts['button_text']!='' ){ ?>
                 <a href="<?php echo esc_url( $atts['button_url'] ); ?>" class="btn bgcolor bghcolors"><?php echo esc_html( $atts['button_text'] ); ?></a>
                 <?php } ?>
@@ -375,7 +378,8 @@ function madang_shortcode_slide( $atts, $content=null ) {
         <img src="<?php echo esc_url( $atts['image'] ); ?>" alt="<?php echo esc_attr( $atts['title'] ); ?>">
         <div class="container">
             <div class="banner-text text-right">
-                <h1 class="text-capitalize"><?php echo esc_html( $atts['title'] ); ?> <span class="txcolor"><?php echo esc_html( $atts['subtitle'] ); ?></span></h1>
+                <h1 class="text-capitalize"><?php echo esc_html( $atts['title'] ); ?><br>
+                <span class="txcolor"><?php echo esc_html( $atts['subtitle'] ); ?></span></h1>
                 <p><?php echo esc_html( $atts['text'] ); ?></p>
                 <?php if ( $atts['button_text']!='' ){ ?>
                 <a href="<?php echo esc_url( $atts['button_url'] ); ?>" class="btn bgcolor bghcolors"><?php echo esc_html( $atts['button_text'] ); ?></a>

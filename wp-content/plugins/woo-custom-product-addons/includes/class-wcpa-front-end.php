@@ -72,7 +72,10 @@ class WCPA_Front_End extends WCPA_Order_Meta
             add_filter('post_class', array($this, 'product_class'), 10, 3);
 
             add_filter('woocommerce_order_item_display_meta_value', array($this, 'display_meta_value'), 10, 3);
-            add_action('woocommerce_checkout_order_processed', array($this, 'checkout_order_processed'), 10, 3);
+          //  add_action('woocommerce_checkout_order_processed', array($this, 'checkout_order_processed'), 10, 3);
+	        add_action( 'woocommerce_checkout_update_order_meta', array( $this, 'checkout_order_processed' ), 1, 1 );
+
+
 
             add_action('woocommerce_checkout_subscription_created', array($this, 'checkout_subscription_created'), 10, 1);//compatibility with subscription plugin
 

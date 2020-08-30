@@ -23,7 +23,7 @@
       <p class="form-field">
         <span class="notice error" style="margin-left:0; margin-right:0; padding-top: 10px; padding-bottom: 10px; display: flex; justify-content: left; align-items: center;">
           <strong>
-            <?php printf(__('No Instagram account connected. Please connect your account <a href="%s">here</a>.', 'insta-gallery'), admin_url('admin.php?page=qligg_account')); ?>
+            <?php printf(esc_html__('No Instagram account connected. Please connect your account <a href="%s">here</a>.', 'insta-gallery'), admin_url('admin.php?page=qligg_account')); ?>
           </strong>
         </span>
       </p>
@@ -77,7 +77,7 @@
         <p class="form-field">
           <span class="notice error" style="margin-left:0; margin-right:0; padding-top: 10px; padding-bottom: 10px; display: flex; justify-content: left; align-items: center;">
             <strong>
-              <?php printf(__('Due to the restrictions of the new Instagram <a target="_blank" href="%s">API</a> it is necessary to connect a business account <a href="%s">here</a>.', 'insta-gallery'), 'https://quadlayers.com/documentation/instagram-feed-gallery/api/business/?utm_source=qligg_admin', admin_url('admin.php?page=qligg_account')); ?>
+              <?php printf(esc_html__('Due to the restrictions of the new Instagram <a target="_blank" href="%s">API</a> it is necessary to connect a business account <a href="%s">here</a>.', 'insta-gallery'), 'https://quadlayers.com/documentation/instagram-feed-gallery/api/business/?utm_source=qligg_admin', admin_url('admin.php?page=qligg_account')); ?>
             </strong>
           </span>
         </p>

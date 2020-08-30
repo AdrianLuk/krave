@@ -24,7 +24,7 @@ if (!class_exists('QLIGG_Frontend')) {
 
       // Masonry
       // -----------------------------------------------------------------------
-      wp_register_script('desandro', plugins_url('/assets/frontend/masonry/masonry.pkgd.min.js', QLIGG_PLUGIN_FILE), null, QLIGG_PLUGIN_VERSION, true);
+      wp_register_script('masonry', plugins_url('/assets/frontend/masonry/masonry.pkgd.min.js', QLIGG_PLUGIN_FILE), null, QLIGG_PLUGIN_VERSION, true);
 
       // Swiper
       // -----------------------------------------------------------------------
@@ -191,7 +191,6 @@ if (!class_exists('QLIGG_Frontend')) {
 
           $options = $instagram_feed = $feed;
 
-
           wp_enqueue_style('insta-gallery');
           wp_enqueue_script('insta-gallery');
 
@@ -206,7 +205,7 @@ if (!class_exists('QLIGG_Frontend')) {
           }
 
           if (in_array($feed['layout'], array('masonry', 'highlight'))) {
-            wp_enqueue_script('desandro');
+            wp_enqueue_script('masonry');
           }
 
           $item_selector = "insta-gallery-feed-{$id}";
@@ -276,9 +275,7 @@ if (!class_exists('QLIGG_Frontend')) {
       add_action('wp_ajax_nopriv_qligg_load_item_images', array($this, 'ajax_load_item_images'));
       add_action('wp_ajax_qligg_load_item_images', array($this, 'ajax_load_item_images'));
       add_action('wp_enqueue_scripts', array($this, 'add_js'));
-      //1326
       add_action('admin_enqueue_scripts', array($this, 'add_js'));
-
       add_shortcode('insta-gallery', array($this, 'do_shortcode'));
     }
 

@@ -3,8 +3,8 @@ Contributors: quadlayers
 Donate link: https://quadlayers.com/portfolio/instagram-gallery/
 Tags: Instagram, Instagram feed, Instagram gallery, Instagram photos, Instagram widget, Instagram pictures
 Requires at least: 3.4
-Tested up to: 5.4.2
-Stable tag: 2.9.6
+Tested up to: 5.5.0
+Stable tag: 3.0.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -104,6 +104,18 @@ There may be some other plugins(like: fancybox, elementor) which also uses image
 5. Instagram Feed Gallery PRO / Masonry layout
 
 == Changelog ==
+
+= 3.0.0 =
+* Fix. WordPress 5.5 compatibility
+
+= 2.9.9 =
+* Fix. instagram feed carousel
+
+= 2.9.8 =
+* Fix. instagram feed gallery widget
+
+= 2.9.7 =
+* Fix. instagram feed gallery widget
 
 = 2.9.6 =
 * Fix. instagram feed gallery pro compatibility

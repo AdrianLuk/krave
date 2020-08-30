@@ -74,10 +74,8 @@ class WCPA_Order_Meta {
             }
         }
     }
-    public function checkout_order_processed($order_id, $posted_data, $order=false) {
-        if($order===false){
-            $order = wc_get_order($order_id);
-        }
+    public function checkout_order_processed($order_id) {
+	    $order = wc_get_order( $order_id );
         $items = $order->get_items();
         if (is_array($items)) {
             foreach ($items as $item_id => $item) {
@@ -98,7 +96,7 @@ class WCPA_Order_Meta {
 
                     $wcpa_meta_data_item = $wcpa_meta_data[$matches[1]];
 
-                    if ($wcpa_meta_data_item['type']=='hidden' ) {
+                    if ($wcpa_meta_data_item['type']=='hidden' || !wcpa_get_option('show_meta_in_order', true)) {
                         $item->update_meta_data('_'.$wcpa_meta_data_item['label'], $data->value, $data->id);
                     }else{
                         $item->update_meta_data($wcpa_meta_data_item['label'], $data->value, $data->id);
@@ -204,7 +202,18 @@ class WCPA_Order_Meta {
                             $meta_value_temp['value'] = $meta_data[$k]['value'];
                             $meta_value_temp['type'] = $v['type'];
                             $meta_value = $this->order_meta_plain($meta_value_temp);
-                            $item->update_meta_data($v['label'], $meta_value, $meta_id);
+
+
+	                        if ( $v['type'] == 'hidden' ||
+	                             !wcpa_get_option('show_meta_in_order', true) ) {
+		                        $item->update_meta_data('_' . $v['label'], $meta_value, $meta_id);
+	                        } else {
+		                        $item->update_meta_data($v['label'], $meta_value, $meta_id);
+	                        }
+
+
+
+
                         } else {
                             $item->delete_meta_data_by_mid($meta_id);
                             unset($meta_data[$k]);

@@ -13,7 +13,7 @@
                                 <form method="post" action="">
                                     <?php wp_nonce_field('wcpa_save_settings', 'wcpa_nonce'); ?>
                                         <div class="form_table">
-                                            <div class="form-table_row clearfix">
+                                            <div class="form-table_row wcpa_clearfix">
                                                     <div class="form_table_left">
                                                         <label for="add_to_cart_text" class="group_heading">
                                                             <?php _e('Add to cart button text', 'woo-custom-product-addons'); ?> <br>
@@ -55,11 +55,15 @@
                                                                 value="1"<?php checked(wcpa_get_option('show_meta_in_order')); ?> />
 
                                                             <label for="wcpa_show_meta_in_order"><?php _e('Show in Order', 'woo-custom-product-addons'); ?>
+                                                                <span style="color: #e50101;font-size: 12px;padding-left: 5px;"> <?php
+	                                                                _e('If unchecked, It will add \'_\' for all field labels after checkout, then it will be hidden from <b>order details</b>, <b>email</b> and <b>invoice</b> as well. ', 'woo-custom-product-addons');
+                                                                 ?></span>
                                                             </label>
+
                                                         </div>
                                                 </div>
                                             </div>
-                                            <div class="form_table_row clearfix">
+                                            <div class="form_table_row wcpa_clearfix">
                                                     <div class="form_table_left">
                                                         <label class="group_heading">
                                                             <?php _e('Load form in recency order', 'woo-custom-product-addons'); ?>
@@ -76,7 +80,7 @@
                                                     </div>
                                             </div>
 
-                                            <div class="form_table_row clearfix">
+                                            <div class="form_table_row wcpa_clearfix">
                                                 <div class="form_table_left">
                                                     <label class="group_heading">
                                                         <?php _e('Hide empty fields in cart', 'woo-custom-product-addons'); ?>
@@ -104,7 +108,7 @@
                         </div>
                         <!-- .postbox -->
 
-                        <div class="premium clearfix">
+                        <div class="premium wcpa_clearfix">
                             <div class="premium_left">
                                 <h1>Upgrade to <br>Premium Now!</h1>
 <!--                                <div class="price">-->

@@ -140,7 +140,7 @@ function ppom_update_option_prices() {
     var show_option_price_indivisually = ppom_input_vars.show_option_price == 'all_option' ? true : false;
     var show_per_unit_price = false;
 
-    //console.log(ppom_all_option_prices);
+    // console.log(ppom_all_option_prices);
 
 
     // Set hidden input
@@ -462,23 +462,25 @@ function ppom_update_option_prices() {
     var total_price_label = ppom_input_vars.total_without_fixed_label;
 
     /** ====== Measures ===================**/
-    var ppom_measure_found = 1;
+    var ppom_measure_quantity = 1;
+    var ppom_measure_input_found = false;
     jQuery(ppom_all_option_prices).each(function(i, option) {
         // Sum only variable prices
         if (option.apply !== 'measure') return;
         ppom_show_base_price = false;
 
+        ppom_measure_input_found = true;
 
         if (option.use_units === 'no') {
 
             var option_qty = option.qty == '' ? 0 : parseFloat(option.qty);
-            ppom_measure_found = option_qty * ppom_measure_found;
+            ppom_measure_quantity = option_qty * ppom_measure_quantity;
         }
         else {
 
             ppom_total_price += parseFloat(option.price) * parseFloat(option.qty) * ppom_get_order_quantity();
         }
-        // console.log(ppom_measure_found);
+        // console.log(ppom_measure_quantity);
 
         // total_price_label += ' '+ ppom_get_wc_price(ppom_total_price).html()+'x'+option_measure;
 
@@ -492,8 +494,8 @@ function ppom_update_option_prices() {
     });
 
     // If measured input has quantities
-    if (ppom_measure_found > 0) {
-        ppom_total_price = ppom_total_price * parseFloat(ppom_measure_found);
+    if (ppom_measure_input_found) {
+        ppom_total_price = productBasePrice * parseFloat(ppom_measure_quantity) + ppom_option_total;
     }
 
     var per_unit_price = parseFloat(ppom_total_price / ppom_get_order_quantity());
@@ -731,18 +733,18 @@ function ppom_update_get_prices() {
 
 
             /*if( jQuery(this).data('type') == 'measure' ) {
-    	        
-    	        var product_qty = ppom_get_order_quantity();
-    	        var measure_price = checked_option_price * jQuery(this).val();
-    	        console.log(checked_option_price);
-    	        console.log(measure_price);
-    	        checked_option_title = checked_option_title+' '+
-    	                                ppom_get_formatted_price(checked_option_price)+'x'
-    	                                +jQuery(this).val();
-    	        
-        	    option_price.label = checked_option_title;
-        	    option_price.price = measure_price;
-        	    option_price.measure = jQuery(this).val();
+              
+              var product_qty = ppom_get_order_quantity();
+              var measure_price = checked_option_price * jQuery(this).val();
+              console.log(checked_option_price);
+              console.log(measure_price);
+              checked_option_title = checked_option_title+' '+
+                                      ppom_get_formatted_price(checked_option_price)+'x'
+                                      +jQuery(this).val();
+              
+              option_price.label = checked_option_title;
+              option_price.price = measure_price;
+              option_price.measure = jQuery(this).val();
                 option_price.apply = 'variable';
                 
                 option_price.product_title  = ppom_input_vars.product_title;
@@ -750,7 +752,7 @@ function ppom_update_get_prices() {
                 option_price.without_tax    = '';
                 
                 options_price_added.push( option_price );
-    	    }*/
+          }*/
         }
 
     });
@@ -806,7 +808,7 @@ function ppom_update_get_prices() {
             var option_price = {};
 
             option_price.price = jQuery(this).attr('data-price');
-            // 		console.log(ppom_product_base_price);
+            //    console.log(ppom_product_base_price);
             option_price.label = jQuery(this).attr('data-label');
             option_price.quantity = (jQuery(this).val() === '') ? 0 : jQuery(this).val();
             option_price.include = jQuery(this).attr('data-includeprice');
@@ -908,7 +910,7 @@ function ppom_update_get_prices() {
             option_price.apply = 'eventcalendar';
             ppom_quantities_qty += parseInt(option_price.quantity);
 
-            // 		console.log(ppom_quantities_qty);
+            //    console.log(ppom_quantities_qty);
             options_price_added.push(option_price);
             ppom_set_order_quantity(ppom_quantities_qty);
         });
@@ -1054,7 +1056,7 @@ function ppom_build_input_price_meta(field_dataname) {
             // code
     }
 
-    console.log(ppom_field_price);
+    // console.log(ppom_field_price);
 
     /*option_price.product_title  = ppom_input_vars.product_title;
     option_price.taxable        = checked_option_taxable;

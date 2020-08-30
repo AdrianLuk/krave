@@ -1,9 +1,10 @@
 === One Click Demo Import ===
-Contributors: capuderg, cyman, Prelc, proteusthemes
+Contributors: smub, proteusthemes
 Tags: import, content, demo, data, widgets, settings, redux, theme options
-Requires at least: 4.0.0
-Tested up to: 5.2.2
-Stable tag: 2.5.2
+Requires at least: 4.0
+Tested up to: 5.4
+Requires PHP: 5.3.2
+Stable tag: 2.6.1
 License: GPLv3 or later
 
 Import your demo content, widgets and theme settings with one click. Theme authors! Enable simple demo import for your theme demo data.
@@ -16,15 +17,13 @@ The best feature of this plugin is, that theme authors can define import files i
 >
 > Setup One Click Demo Imports for your theme and your users will thank you for it!
 >
-> [Follow this easy guide on how to setup this plugin for your themes!](http://proteusthemes.github.io/one-click-demo-import/)
->
-> Also [sign up to the newsletter](http://proteusthemes.github.io/one-click-demo-import/#ocdi-newsletter-signup), so we can inform you about any updates, changes or improvements.
+> [Follow this easy guide on how to setup this plugin for your themes!](http://awesomemotive.github.io/one-click-demo-import/)
 
 > **Are you a theme user?**
 >
-> Contact the author of your theme and [let them know about this plugin](http://proteusthemes.github.io/one-click-demo-import/theme-users.html). Theme authors can make any theme compatible with this plugin in 15 minutes and make it much more user-friendly.
+> Contact the author of your theme and [let them know about this plugin](http://awesomemotive.github.io/one-click-demo-import/theme-users.html). Theme authors can make any theme compatible with this plugin in 15 minutes and make it much more user-friendly.
 >
-> "[Where can I find the contact of the theme author?](http://proteusthemes.github.io/one-click-demo-import/theme-users.html)"
+> "[Where can I find the contact of the theme author?](http://awesomemotive.github.io/one-click-demo-import/theme-users.html)"
 
 This plugin will create a submenu page under Appearance with the title **Import demo data**.
 
@@ -38,7 +37,7 @@ NOTE: There is no setting to "connect" authors from the demo import file to the 
 
 **Do you want to contribute?**
 
-Please refer to the official [GitHub repository](https://github.com/proteusthemes/one-click-demo-import) of this plugin.
+Please refer to the official [GitHub repository](https://github.com/awesomemotive/one-click-demo-import) of this plugin.
 
 == Installation ==
 
@@ -383,7 +382,7 @@ This happens, because your hosting server is using a very old version of PHP. Th
 
 = Issues with the import, that we can't fix in the plugin =
 
-Please visit this [docs page](https://github.com/proteusthemes/one-click-demo-import/blob/master/docs/import-problems.md), for more answers to issues with importing data.
+Please visit this [docs page](https://github.com/awesomemotive/one-click-demo-import/blob/master/docs/import-problems.md), for more answers to issues with importing data.
 
 == Screenshots ==
 
@@ -392,6 +391,23 @@ Please visit this [docs page](https://github.com/proteusthemes/one-click-demo-im
 3. Example of how the import page looks like, when no demo imports are predefined a.k.a manual import.
 
 == Changelog ==
+
+= 2.6.1 =
+
+*Release Date - 21 July 2020*
+
+* Fixed Elementor import issues.
+
+= 2.6.0 =
+
+*Release Date - 21 July 2020*
+
+* Improved code execution: not loading plugin code on frontend.
+* Fixed incorrect post and post meta import (unicode and other special characters were not escaped properly).
+* Fixed error (500 - internal error) for Widgets import on PHP 7.x.
+* Fixed PHP notices for manual demo import.
+* Fixed PHP warning if `set_time_limit` function is disabled.
+* Fixed links for switching manual and predefined import modes.
 
 = 2.5.2 =
 

@@ -588,6 +588,112 @@ jQuery(function($) {
     **/
     var $uploaded_image_container;
     $(document).on('click', '.ppom-pre-upload-image-btn', function(e) {
+        e.preventDefault();
+
+        var meta_type = $(this).attr('data-metatype');
+        $uploaded_image_container = $(this).closest('div');
+        var image_append = $uploaded_image_container.find('ul');
+        var option_index = parseInt($uploaded_image_container.find('#ppom-meta-opt-index').val());
+        var main_wrapper = $(this).closest('.ppom-slider');
+        var field_index = main_wrapper.find('.ppom-fields-actions').attr('data-field-no');
+        var price_placeholder = 'Price (fix or %)';
+
+        var wp_media_type = 'image';
+        if (meta_type == 'audio') {
+            wp_media_type = 'audio,video';
+        }
+
+        var button = $(this),
+            custom_uploader = wp.media({
+                title: 'Choose File',
+                library: {
+                    type: wp_media_type
+                },
+                button: {
+                    text: 'Upload'
+                },
+                multiple: true
+            }).on('select', function() {
+
+                var attachments = custom_uploader.state().get('selection').toJSON();
+
+                attachments.map((meta, index) => {
+
+                    var fileurl = meta.url;
+                    var fileid = meta.id;
+                    var filename = meta.filename;
+                    var file_title = meta.title;
+
+
+                    var img_icon = '<img width="60" src="' + fileurl + '" style="width: 34px;">';
+                    var url_field = '<input placeholder="url" type="text" name="ppom[' + field_index + '][' + meta_type + '][' + option_index + '][url]" class="form-control" data-opt-index="' + option_index + '" data-metatype="url">';
+
+                    if (meta.type !== 'image') {
+                        var img_icon = '<img width="60" src="' + attachment.icon + '" style="width: 34px;">';
+                        url_field = '';
+                    }
+
+                    var price_metatype = 'price';
+                    var stock_metatype = 'stock';
+                    var stock_placeholder = 'Stock';
+
+                    // Set name key for imageselect addon
+                    if (meta_type == 'imageselect') {
+                        var class_name = 'data-options ui-sortable-handle';
+                        var condidtion_attr = 'image_options';
+                        meta_type = 'images';
+                        price_placeholder = 'Price';
+                        url_field = '<input placeholder="Description" type="text" name="ppom[' + field_index + '][' + meta_type + '][' + option_index + '][description]" class="form-control" data-opt-index="' + option_index + '" data-metatype="description">';
+                    }
+                    else if (meta_type == 'images') {
+                        var class_name = 'data-options ui-sortable-handle';
+                        var condidtion_attr = 'image_options';
+                    }
+                    else if (meta_type == 'conditional_meta') {
+                        meta_type = 'images';
+                        var class_name = 'data-options ui-sortable-handle';
+                        var condidtion_attr = 'image_options';
+                        price_placeholder = 'Meta IDs';
+                        price_metatype = 'meta_id';
+                    }
+                    else {
+                        var class_name = '';
+                        var condidtion_attr = '';
+                    }
+
+                    if (fileurl) {
+                        var image_box = '';
+                        image_box += '<li class="' + class_name + '" data-condition-type="' + condidtion_attr + '">';
+                        image_box += '<span class="dashicons dashicons-move" style="margin-bottom: 7px;margin-top: 2px;"></span>';
+                        image_box += '<span class="ppom-uploader-img-title"></span>';
+                        image_box += '<div style="display: flex;">';
+                        image_box += '<div class="ppom-uploader-img-center">';
+                        image_box += img_icon;
+                        image_box += '</div>';
+                        image_box += '<input type="hidden" name="ppom[' + field_index + '][' + meta_type + '][' + option_index + '][link]" value="' + fileurl + '" data-opt-index="' + option_index + '" data-metatype="link">';
+                        image_box += '<input type="hidden" name="ppom[' + field_index + '][' + meta_type + '][' + option_index + '][id]" value="' + fileid + '" data-opt-index="' + option_index + '" data-metatype="id">';
+                        image_box += '<input type="text" placeholder="Title" name="ppom[' + field_index + '][' + meta_type + '][' + option_index + '][title]" class="form-control ppom-image-option-title" data-opt-index="' + option_index + '" data-metatype="title" value="' + file_title + '">';
+                        image_box += '<input class="form-control" type="text" placeholder="' + price_placeholder + '" name="ppom[' + field_index + '][' + meta_type + '][' + option_index + '][' + price_metatype + ']" class="form-control" data-opt-index="' + option_index + '" data-metatype="' + price_metatype + '">';
+                        image_box += '<input class="form-control" type="text" placeholder="' + stock_placeholder + '" name="ppom[' + field_index + '][' + meta_type + '][' + option_index + '][' + stock_metatype + ']" class="form-control" data-opt-index="' + option_index + '" data-metatype="' + stock_metatype + '">';
+                        image_box += url_field;
+                        image_box += '<button class="btn btn-danger ppom-pre-upload-delete" style="height: 35px;"><i class="fa fa-times" aria-hidden="true"></i></button>';
+                        image_box += '</div>';
+                        image_box += '</li>';
+
+                        $(image_box).appendTo(image_append);
+
+                        option_index++;
+                    }
+
+                });
+
+                $uploaded_image_container.find('#ppom-meta-opt-index').val(option_index);
+
+            }).open();
+    });
+
+    var $uploaded_image_container;
+    $(document).on('click', '.ppom-pre-upload-image-btnsd', function(e) {
 
         e.preventDefault();
         var meta_type = $(this).attr('data-metatype');

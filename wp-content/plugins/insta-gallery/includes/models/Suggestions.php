@@ -107,7 +107,7 @@ class QLIGG_Suggestions_List_Table extends WP_Plugin_Install_List_Table {
     $tabs = array();
 
     if ('search' === $tab) {
-      $tabs['search'] = __('Search Results');
+      $tabs['search'] = esc_html__('Search Results');
     }
     if ($tab === 'beta' || false !== strpos(get_bloginfo('version'), '-')) {
       $tabs['beta'] = _x('Beta Testing', 'Plugin Installer');

@@ -644,6 +644,10 @@ label {
     display: block;
     line-height: 27px;
 }
+
+#panel-8601-0-0-0 a {
+    color: #60ba62 !important;
+}
 /*=============== # Transition effects  ===================*/
 
 h1 a,
@@ -797,7 +801,7 @@ h6 {
 .navbar-default .navbar-nav>li>a {
     color: #000;
     text-transform: uppercase;
-    font-size: 13px;
+    font-size: 16px;
     padding: 0 5px;
     position: relative;
 }
@@ -807,7 +811,7 @@ h6 {
     right: 0;
     margin: auto;
     height: 3px;
-    background: #60ba62;
+    background: #DEDEDE;
     width: 0;
     bottom: -15px;
     content: '';
@@ -868,7 +872,7 @@ h6 {
 /*======================= ## Header menu ==================*/
 
 .wrapper>header.green {
-    background: #60ba62;
+    background: #DEDEDE;
 }
 .wrapper>header.green .navbar-default .navbar-nav>.active>a,
 .wrapper>header.green .navbar-default .navbar-nav>.active>a:hover,
@@ -994,7 +998,9 @@ h6 {
     border-radius: 0;
 }
 .home-banner1.home-banner .banner-text {
-    width: 370px;
+    width: 80%;
+    background: radial-gradient(circle, rgba(255,255,255,0.861782212885154) 0%, rgba(255,255,255,0.8589810924369747) 40%, rgba(255,255,255,0) 100%);
+    padding: 2%;
 }
 .home-banner1.home-banner .banner-text h1 {
     margin-bottom: 18px;
@@ -1025,9 +1031,9 @@ h6 {
     color: #575757;
 }
 .home-banner1.home-banner #owl-demo .owl-center .banner-text {
-    width: 410px;
+    width: 85%;
     right: 13%;
-    top: 20%;
+    top: 25% !important;
 }
 .home-banner1.home-banner #owl-demo .owl-center .banner-text h1 {
     margin-bottom: 10px;
@@ -1037,17 +1043,19 @@ h6 {
     padding: 13px 11%;
 }
 .home-banner1.home-banner #owl-demo .owl-center .banner-text {
-    width: 63%;
+    width: 100%;
     margin: auto;
     left: 0;
     right: 0;
-    top: 13%;
+    top: 20%;
+    max-height: 60%;
+    padding: 5%;
 }
 .home-banner1.home-banner #owl-demo .owl-right .banner-text h1 {
     margin-bottom: 35px;
 }
 .home-banner1.home-banner #owl-demo .owl-right .banner-text {
-    width: 370px;
+    width: 80%;
 }
 .home-banner1.home-banner #owl-demo .owl-right .banner-text h1 {
     margin-bottom: 18px;
@@ -1066,7 +1074,7 @@ h6 {
     right: 13%;
 }
 .noofset.home-banner1 #owl-demo .item .banner-text {
-    top: 20%;
+    top: 35%;
 }
 
 /*======================= # Featured menu carousel ==================*/
@@ -1419,6 +1427,21 @@ video {
 }
 .member-wrap:hover figure:before {
     border: 3px solid #fff;
+}
+
+.social-links {
+    /* padding: 28px; */
+    background: #fff;
+}
+
+.social-links ul {
+    list-type: none;
+}
+
+}
+.social-links li i.fa-facebook,
+.social-links li i.fa-instagram {
+    background: #60ba62 !important;
 }
 /*======================= # Blog section ==================*/
 
@@ -1976,6 +1999,19 @@ a.choose-plan:hover{
         margin-right: -3px;
     }
 }
+
+@media (max-width: 767px) {
+    .home-banner1.home-banner #owl-demo .owl-center .banner-text {
+        top: 0 !important;
+    }
+}
+
+ @media (max-width: 425px) {   
+    .shop_table .product-name h6 {
+        text-align: left;
+        margin-top: 20px !important;
+    }
+}
 /*======================= # Choose plan page ==================*/
 
 .text-center figure {
@@ -2440,8 +2476,13 @@ footer.limited-footer {
     overflow: hidden;
     top: 0;
 }
-.about-us-page .wrapper {
-    padding-top: 0;
+.about-us-page .wrapper,
+.page-template-default .wrapper {
+    padding-top: 80px;
+}
+
+.page-id-2398 .wrapper {
+    padding-top: 130px;
 }
 .about-us-banner.banner-image img {
     /*height: 800px;*/
@@ -2473,7 +2514,8 @@ footer.limited-footer {
     overflow: hidden;
 }
 .image-grid-row {
-    margin-bottom: 50px;
+    /*margin-bottom: 50px;*/
+    display: none;
 }
 .about-us-block article {
     margin-bottom: 70px;
@@ -2591,6 +2633,10 @@ footer.limited-footer {
 }
 .testimonial-wrap {
     margin: 0 -22px;
+}
+
+#panel-2441-0-0-0 a {
+    color: #60ba62 !important;
 }
 /*======================= # Pricing page  ==================*/
 
@@ -3366,7 +3412,7 @@ figure {
     font-size: 23px;
 }
 .social-links li i.fa-facebook {
-    background: #4867aa;
+    background: #60ba62;
 }
 .social-links li i.fa-twitter {
     background: #00aced;
@@ -3375,7 +3421,7 @@ figure {
     background: #ba2222;
 }
 .social-links li i.fa-instagram {
-    background: #DC3170;
+    background: #60ba62;
 }
 
 .blog-left-content-wrap .social-links {
@@ -4338,8 +4384,8 @@ a.reset_variations:before {
 }
 .shop_table .product-name h6 {
     margin-top: 0px;
-    margin-top: 0px;
     margin-bottom: 8px;
+    text-transform: none;
 }
 .shop_table .product-price .woocommerce-Price-amount {
     font-weight: 600;
@@ -4383,7 +4429,7 @@ input.txtacrescimo {
 .shop_table tbody td:before {
    /* content: attr(data-title) ": ";*/
     font-weight: 700;
-    position: absolute;
+    /*position: absolute;*/
     left: 10px;
     display: none;
 }
@@ -4751,7 +4797,7 @@ footer {
     padding: 0 10px;
 }
 .footer-logo {
-    width: 30%;
+    width: 15%;
 }
 .footer-logo figure {
     margin-bottom: 0;
@@ -5231,7 +5277,7 @@ del {
 .comment-content h5,
 .comment-content h6 {
     letter-spacing: 0.1em;
-    text-transform: uppercase;
+    text-transform: none;
 }
 /* Input fields animations */
 
@@ -7423,8 +7469,12 @@ span.stats-item {
     overflow: hidden;
 }
 .wrapper {
-    padding-top: 90px;
+    padding-top: 130px;
     position: relative;
+}
+
+.home .wrapper {
+    padding-top: 0px;
 }
 .banner-image {
     height: 406px;
@@ -8463,7 +8513,7 @@ section {
 }
 .health-page header.green.scrolled,
 .health-page header.green .navbar-default .navbar-nav>li>a:after {
-    background: #60ba62;
+    background: #DEDEDE;
 }
 .health-page header.green.scrolled .navbar-default .navbar-nav>li>a:after {
     background: #fff;
@@ -8986,26 +9036,26 @@ ul.sucess-slide li p:before {
     background: #fafafa;
     width: 100%;
     padding: 9px 0px 3px;
-    box-shadow: 1px 1px 10px 1px #ddd;
+    /*box-shadow: 1px 1px 10px 1px #ddd; */
 }
 .wrapper>header.green.scrolled {
-    background: #60ba62;
+    background: #DEDEDE;
 }
 .wrapper>header.scrolled img {
     transform: scale(.79);
 }
 .noscroll .menu,
 .noscroll .nav-cart {
-    margin-top: 5px;
+    margin-top: 15px;
 }
 .noscroll .nav-right-btn {
     margin-top: 19px;
 }
 .wrapper>header.noscroll.transparent {
-    background: transparent;
+    background: rgba(0,0,0,0.15);
 }
 .header.green.noscroll {
-    background: #60ba62;
+    background: #DEDEDE;
 }
 .noofset {
     margin: -87px 0 0 0;
@@ -10305,7 +10355,7 @@ div.program_search {
         z-index: 1000;
     }
     .wrapper>header {
-        padding: 13px 0 0;
+        padding: 5px 0 0;
         position: relative;
     }
     .collapse {
@@ -10392,7 +10442,7 @@ div.program_search {
     }
     .banner-text {
         top: 35%;
-        background: rgba(255, 255, 255, 0.7);
+        /* background: rgba(255, 255, 255, 0.7); */
         padding: 10px;
     }
     .footer-social-links {
@@ -10432,7 +10482,7 @@ div.program_search {
     .navbar-default .navbar-nav>li.active>a,
     .navbar-default .navbar-nav>li.current-menu-item>a {
         color: #fff;
-        background: #60ba62;
+        background: #DEDEDE;
     }
     .media-partner {
         padding: 20px 0 0;
@@ -11310,7 +11360,7 @@ div.program_search {
         padding-bottom: 20px;
     }
     .health-page header.green {
-        background: #60ba62;
+        background: #DEDEDE;
     }
     .fun-fact,
     .fun-fact .box {
@@ -11641,7 +11691,7 @@ div.program_search {
       
     }
     .noofset.home-banner1 #owl-demo .item .banner-text {
-        top: 8%;
+        top: 20%;
     }
     .home-banner1.home-banner #owl-demo .owl-left a.btn,
     .home-banner1.home-banner #owl-demo .owl-right a.btn,
@@ -11657,9 +11707,8 @@ div.program_search {
         color: #575757;
     }
     .home-banner1.home-banner #owl-demo .owl-left .banner-text, .home-banner1.home-banner #owl-demo .owl-right .banner-text {
-        width: 410px;
-        right: 13%;
-        top: 10%;
+        width: 100%;
+        top: 0%;
     }
     .home-banner1.home-banner #owl-demo .owl-left .banner-text h1, .home-banner1.home-banner #owl-demo .owl-right .banner-text h1 {
         margin-bottom: 10px;
@@ -11673,11 +11722,11 @@ div.program_search {
         padding: 13px 11%;
     }
     .home-banner1.home-banner #owl-demo .owl-left .banner-text, .home-banner1.home-banner #owl-demo .owl-right .banner-text, .home-banner1.home-banner #owl-demo .owl-center .banner-text {
-        width: 83%;
+        width: 100%;
         margin: auto;
         left: 0;
         right: 0;
-        top: 3%;
+        height: 50%;
     }
 
     .banner-image img {

@@ -74,15 +74,4 @@
   </form>
 </div>
 
-<!-- <div class="wrap about-wrap full-width-layout">
-  <?php
-  // if (count($feeds)) {
-
-  //   $last  = end($feeds);
-
-  //   echo do_shortcode('[insta-gallery id="' . $last['id'] . '"]');
-  // }
-  ?>
-</div> -->
-
 <?php include_once('modals/template-scripts-feed.php'); ?>

@@ -44,7 +44,7 @@ class QLIGG_Notices
       <div id="qligg-admin-rating" class="qligg-notice notice is-dismissible" data-notice_id="qligg-user-rating">
         <div class="notice-container" style="padding-top: 10px; padding-bottom: 10px; display: flex; justify-content: left; align-items: center;">
           <div class="notice-image">
-            <img style="border-radius:50%;max-width: 90px;" src="<?php echo plugins_url('/assets/backend/img/logo.jpg', QLIGG_PLUGIN_FILE); ?>" alt="<?php echo esc_html(QLIGG_PLUGIN_NAME); ?>>">
+            <img style="border-radius:50%;max-width: 90px;" src="<?php echo plugins_url('/assets/backend/img/icon-128x128.gif', QLIGG_PLUGIN_FILE); ?>" alt="<?php echo esc_html(QLIGG_PLUGIN_NAME); ?>>">
           </div>
           <div class="notice-content" style="margin-left: 15px;">
             <p>
@@ -68,7 +68,7 @@ class QLIGG_Notices
     <div id="qligg-admin-rating" class="qligg-notice notice is-dismissible error" data-notice_id="qligg-api-tag">
       <div class="notice-container" style="padding-top: 10px; padding-bottom: 10px; display: flex; justify-content: left; align-items: center;">
         <div class="notice-image">
-          <img style="border-radius:50%;max-width: 90px;" src="<?php echo plugins_url('/assets/backend/img/logo.jpg', QLIGG_PLUGIN_FILE); ?>" alt="<?php echo esc_html(QLIGG_PLUGIN_NAME); ?>>">
+          <img style="border-radius:50%;max-width: 90px;" src="<?php echo plugins_url('/assets/backend/img/icon-128x128.gif', QLIGG_PLUGIN_FILE); ?>" alt="<?php echo esc_html(QLIGG_PLUGIN_NAME); ?>>">
         </div>
         <div class="notice-content" style="margin-left: 15px;">
           <p>

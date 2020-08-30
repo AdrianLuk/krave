@@ -200,7 +200,7 @@ function ppom_get_product_price( $product, $variation_id=null, $context='' ) {
 	$product_price = 'incl' === get_option( 'woocommerce_tax_display_shop' ) ? wc_get_price_including_tax( $product ) : wc_get_price_excluding_tax($product);
 	
 	
-	// $product_price = $product->get_price();
+	$product_price = $product->get_price();
 	
 	if( $product->is_type('variable') && $variation_id ) {
 		$variable_product	= wc_get_product($variation_id);
@@ -226,8 +226,7 @@ function ppom_get_product_price( $product, $variation_id=null, $context='' ) {
 	if( has_filter('woocs_exchange_value') ) {
 		global $WOOCS;
 		
-		// June 5, now following code is being disabled and it is working fine.
-		if( $WOOCS->is_multiple_allowed ) {
+		if( ! $WOOCS->is_multiple_allowed ) {
 			$product_price = apply_filters('woocs_exchange_value', $product_price);
 		}
 	}
@@ -484,22 +483,19 @@ function ppom_generate_cart_meta( $ppom_cart_fields, $product_id, $ppom_meta_ids
 					foreach ($value as $popupID => $image_data) {
 						
 						$fomatted_data = json_decode(stripcslashes($image_data), true);
-						// ppom_pa($fomatted_data);
+						
 						$imageURL = isset($fomatted_data['imageURL']) ? $fomatted_data['imageURL'] : '';
     					$imageURL = ppom_get_dir_url() . 'cropped/' . $imageURL;
+						$fileName = isset($fomatted_data['fileName']) ? $fomatted_data['fileName'] : '';
+    					
+    					$fileName = substr($fileName, 0, strrpos($fileName, "."));
     					
     					$ppom_html	.= '<tr>';
 	    					$ppom_html	.= '<td>';
-	    						$ppom_html 	.= '<a href="'.esc_url($imageURL).'"><img class="img-thumbnail" style="width:'.esc_attr(ppom_get_thumbs_size()).'" src="'.esc_url($imageURL).'" title="'.esc_attr($imageURL).'"></a>';
+	    						$ppom_html 	.= '<a href="'.esc_url($imageURL).'"><img class="img-thumbnail" style="width:'.esc_attr(ppom_get_thumbs_size()).'" src="'.esc_url($imageURL).'" title="'.esc_attr($fileName).'"></a>';
 	    					$ppom_html	.= '</td>';
-	    					$ppom_html	.= '<td>Main Image</td>';
+	    					$ppom_html	.= '<td>'.__("Original Image","ppom").'</td>';
     					$ppom_html	.= '</tr>';
-    					
-    					// $ppom_html	.= '<tr>';
-	    				// 	$ppom_html	.= '<td>'.__("Cropped Image","ppom").'</td>';
-	    				// 	$ppom_html	.= '<td>' .__("Label","ppom").'</td>';
-	    				// 	$ppom_html	.= '<td>' .__("QTY","ppom").'</td>';
-    					// $ppom_html	.= '</tr>';
 						
 						foreach ($fomatted_data['cropped'] as $cropped_id => $cropped_meta) {
 							
@@ -512,12 +508,11 @@ function ppom_generate_cart_meta( $ppom_cart_fields, $product_id, $ppom_meta_ids
         		
 			        		$ppom_html	.= '<tr>';
 					        		$ppom_html .= '<td>';
-						        		$ppom_html .= '<a href="'.esc_url($cropped_url).'" class="lightbox" title="'.esc_attr($cropped_url).'">';
-						        			$ppom_html .= '<img class="img-thumbnail" style="width:'.esc_attr(ppom_get_thumbs_size()).'" src="'.esc_url($cropped_url).'" title="'.esc_attr($cropped_url).'">';
+						        		$ppom_html .= '<a href="'.esc_url($cropped_url).'" class="lightbox">';
+						        			$ppom_html .= '<img class="img-thumbnail" style="width:'.esc_attr(ppom_get_thumbs_size()).'" src="'.esc_url($cropped_url).'">';
 						        		$ppom_html .= '</a>';
 					        		$ppom_html .= '</td>';
 				        		$ppom_html	.= '<td>' .$qtylabel. '</td>';
-				        		// $ppom_html	.= '<td>' .$qty. '</td>';
 			        		$ppom_html	.= '</tr>';
 						}
 					}
@@ -574,6 +569,7 @@ function ppom_generate_cart_meta( $ppom_cart_fields, $product_id, $ppom_meta_ids
 				if($value) {
 					
 					$display = ppom_generate_html_for_images($value);
+				
 					$meta_data = array('name'=>$field_title, 'value'=>$value, 'display'=>$display);
 				}
 				break;
@@ -637,7 +633,7 @@ function ppom_generate_cart_meta( $ppom_cart_fields, $product_id, $ppom_meta_ids
 				foreach($option_posted as $posted_value) {
 					foreach($options_filter as $option_key => $option) {
 	                    
-	                    $option_value = stripslashes($option['raw']);
+	                    $option_value = stripslashes(ppom_wpml_translate($option['raw'],'PPOM'));
 	                    
 	                    if(  $posted_value == $option_value ) {
 	                        $option_label_array[] = $option['label'];
@@ -1006,6 +1002,11 @@ function ppom_convert_options_to_key_val($options, $meta, $product) {
 	foreach($options as $option) {
 		
 		$the_option = isset($option['option']) ? stripslashes($option['option']) : '';
+		
+		if( apply_filters('ppom_hide_if_out_of_stock', true, $option) ) {
+			$has_stock = ppom_option_has_stock($option);
+			if( ! $has_stock ) continue;
+		}
 		
 		//Following input has 'title' instead 'option' in options array
 		$option_with_titles_keys = apply_filters('ppom_option_with_title_key', array('imageselect', 'image', 'audio') );
@@ -1582,6 +1583,16 @@ function ppom_field_has_stock( $meta, $value ) {
     }
 	
 	return apply_filters("ppom_field_has_stock", $has_stock, $meta, $value);
+}
+
+// Check if given option has stock
+function ppom_option_has_stock( $option ) {
+
+	$has_stock = true;
+	if( isset($option['stock']) && $option['stock'] != '' && intval($option['stock']) <= 0 )
+		$has_stock = false;	
+		
+	return apply_filters("ppom_option_has_stock", $has_stock, $option);
 }
 
 // check if PPOM PRO is installed

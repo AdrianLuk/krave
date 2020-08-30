@@ -308,7 +308,7 @@ function ppom_hooks_load_input_scripts( $product, $ppom_id=null ) {
     	        
     	        wp_enqueue_script( 'ppom-file-upload', PPOM_URL.'/js/file-upload.js', $file_upload_pre_scripts, PPOM_VERSION, true);
     	    	$plupload_lang = !empty($field['language']) ? $field['language'] : 'en';
-    	    	// wp_enqueue_script( 'pluploader-language', PPOM_URL.'/js/plupload-2.1.2/js/i18n/'.$plupload_lang.'.js');
+    	    	wp_enqueue_script( 'pluploader-language', "//cdnjs.cloudflare.com/ajax/libs/plupload/2.1.9/i18n/{$plupload_lang}.js");
     	    	$file_upload_nonce_action = "ppom_uploading_file_action";
     	    	$file_delete_nonce_action = "ppom_deleting_file_action";
 				$ppom_file_vars = array('ajaxurl' => admin_url( 'admin-ajax.php', (is_ssl() ? 'https' : 'http') ),
@@ -337,7 +337,7 @@ function ppom_hooks_load_input_scripts( $product, $ppom_id=null ) {
 				
 				wp_enqueue_script( 'ppom-file-upload', PPOM_URL.'/js/file-upload.js', $file_upload_pre_scripts,  PPOM_VERSION, true);
     	    	$plupload_lang = !empty($field['language']) ? $field['language'] : 'en';
-    	    	// wp_enqueue_script( 'pluploader-language', PPOM_URL.'/js/plupload-2.1.2/js/i18n/'.$plupload_lang.'.js');
+    	    	wp_enqueue_script( 'pluploader-language', "//cdnjs.cloudflare.com/ajax/libs/plupload/2.1.9/i18n/{$plupload_lang}.js");
     	    	$file_upload_nonce_action = "ppom_uploading_file_action";
     	    	$file_delete_nonce_action = "ppom_deleting_file_action";
 				$ppom_file_vars = array('ajaxurl' => admin_url( 'admin-ajax.php', (is_ssl() ? 'https' : 'http') ),

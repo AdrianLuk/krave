@@ -47,7 +47,7 @@ add_image_size( 'madang-thumb', 192, 132, true );
 add_image_size( 'madang-gallery', 290, 290, true );
 add_image_size( 'madang-gallery-carousel', 600, 388, true );
 add_image_size( 'madang-blog-minified', 389, 258, true );
-add_image_size( 'madang-product-small', 270, 270, true );
+add_image_size( 'madang-product-small', 500, 500, true );
 add_image_size( 'madang-aboutus-small', 321, 257, true );
 add_image_size( 'madang-aboutus-large', 471, 543, true );
 add_filter('jpeg_quality', function($arg){return get_theme_mod( 'madang_imgq', 90 );});
