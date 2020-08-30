@@ -126,12 +126,12 @@ function madang_shortcode_categories( $atts, $content = null ) {
                                 ?>
 
                                 <!--single cat -->
-                                <div class="col-sm-3 cat-wrap wow fadeInLeft">
+                                <div class="col-sm-4 cat-wrap wow fadeInLeft">
                                     <a href="<?php echo esc_url( $link ); ?>" class="ajax_cat" data-cat="<?php echo esc_attr( $tag->name ); ?>">
                                         <span><?php echo esc_html( $tag->name ); ?></span>
                                         <figure>
                                             <?php if ( isset( $image ) ) : ?>
-                                                <img src="<?php echo esc_url( $image[0] ); ?>" alt="<?php echo esc_attr( $tag->name ); ?>">
+                                                <img style="min-width: 100%;" src="<?php echo esc_url( $image[0] ); ?>" alt="<?php echo esc_attr( $tag->name ); ?>">
                                             <?php endif; ?>
                                         </figure>
                                     </a>
